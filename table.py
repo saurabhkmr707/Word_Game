@@ -9,7 +9,6 @@ class Table:
         self.entry_list = []  # list of lists containing rows and columns
         self.entry_vals = [[0 for i in range(n_cols)] for i in range(n_rows)]
 
-
         for i in range(n_rows):
             rows = []
             for j in range(n_cols):
@@ -46,11 +45,16 @@ class Table:
 
         entry = self.entry_list[row][column]
         entry.config(state='disabled')
+        found_words = []
+        found_words += check_all_words(row,column, words_list, self.entry_vals)
+        # print (found_words)
 
 
 if __name__ == "__main__":
     # find total number of rows and
     # columns in list
+    path = 'data/20k.txt'
+    words_list = read_file(path) # todo choose a better data source with minimal and very frequent words
     total_rows = 10
     total_columns = 10
 
